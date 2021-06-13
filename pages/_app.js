@@ -15,18 +15,23 @@ function MyApp({ Component, pageProps }) {
           content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'
         />
         <meta name='description' content='Description' />
-        <meta name='keywords' content='Todo App' />
         <title>Todo App | Frontend mentor</title>
-
+        <meta
+          name='description'
+          content='You will never forget your tasks with todo app'
+        />
+        <meta name='keywords' content='Todo app, List app' />
         <link rel='manifest' href='/manifest.json' />
         <link
-          href='/favicon-32x32.png'
+          href='/images/favicon-32x32.png'
           rel='icon'
           type='image/png'
           sizes='32x32'
         />
         <meta name='theme-color' content='#85a2fc' />
         <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon' />
+        <link rel='apple-touch-icon' href='/images/apple-touch-icon.png' />
+        <link rel='manifest' href='/manifest.json' />
       </Head>
       <Component {...pageProps} />
     </div>
