@@ -77,8 +77,6 @@ export default function Home() {
   const [uniqueTodos, setUniqueTodos] = useState([])
   const [windowReady, setWindowReady] = useState()
 
-  console.log(todos)
-
   useEffect(() => {
     setWindowReady(true)
   }, [])
@@ -147,11 +145,9 @@ export default function Home() {
       case TABS.COMPLETED:
         let completedTodos = todos.filter(todo => todo.completed === true)
         setUniqueTodos(completedTodos)
-        console.log(completedTodos)
         return
       case TABS.ACTIVE:
         let activeTodos = todos.filter(todo => !todo.completed)
-        console.log(activeTodos)
         setUniqueTodos(activeTodos)
         return
       case TABS.ALL:
