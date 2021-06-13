@@ -39,6 +39,7 @@ const Todo = ({ todo, toggleTodo, removeTodo, index }) => {
           >
             <HiX />
           </button>
+          {provided.placeholder}
         </div>
       )}
     </Draggable>
@@ -46,13 +47,17 @@ const Todo = ({ todo, toggleTodo, removeTodo, index }) => {
 }
 
 const TODOS = [
-  { id: '1', name: 'Complete online JavaScript course', completed: true },
-  { id: '2', name: 'Jog around the park 3x', completed: false },
-  { id: '3', name: '10 minutes meditation', completed: false },
-  { id: '4', name: 'Read for 1 hour', completed: false },
-  { id: '5', name: 'Pick up groceries', completed: false },
   {
-    id: '6',
+    id: 'Complete',
+    name: 'Complete online JavaScript course',
+    completed: true,
+  },
+  { id: 'Jog', name: 'Jog around the park 3x', completed: false },
+  { id: 'meditation', name: '10 minutes meditation', completed: false },
+  { id: 'Read', name: 'Read for 1 hour', completed: false },
+  { id: 'groceries', name: 'Pick up groceries', completed: false },
+  {
+    id: 'Frontend',
     name: 'Complete Todo App on Frontend Mentor',
     completed: true,
   },
@@ -70,6 +75,13 @@ export default function Home() {
   const [inputVal, setInputVal] = useState('')
   const [activeTabs, setActiveTabs] = useState(TABS.ALL)
   const [uniqueTodos, setUniqueTodos] = useState([])
+  const [windowReady, setWindowReady] = useState()
+
+  console.log(todos)
+
+  useEffect(() => {
+    setWindowReady(true)
+  }, [])
 
   useEffect(() => {
     if (typeof window !== undefined) {
@@ -171,7 +183,9 @@ export default function Home() {
     <div className='w-full bg-white dark:bg-gray-900 min-h-screen'>
       <main className='relative z-10 w-98% max-w-5xl mx-auto p-5'>
         <div className='flex mt-10 justify-between items-center'>
-          <h1 className='font-bold text-3xl text-white uppercase'>Todo</h1>
+          <h1 className='font-bold text-3xl text-white uppercase tracking-wider'>
+            Todo
+          </h1>
           <button className='p-2 text-xl text-white' onClick={toggleTheme}>
             <HiSun className='hidden dark:block' />
             <HiMoon className='block dark:hidden' />
@@ -192,29 +206,31 @@ export default function Home() {
             className='flex-1 py-2 px-2 border-0 bg-transparent ml-1 focus:text-gray-700 dark:focus:text-gray-300'
           />
         </form>
-        <DragDropContext onDragEnd={handleOnDragEnd}>
-          <Droppable droppableId='draggableTodo'>
-            {provided => (
-              <div
-                className='flex flex-col rounded-t-md mt-10 bg-white dark:bg-gray-800 shadow-lg'
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                {(activeTabs !== TABS.ALL ? uniqueTodos : todos).map(
-                  (todo, index) => (
-                    <Todo
-                      key={todo.id}
-                      toggleTodo={toggleTodo}
-                      todo={todo}
-                      removeTodo={removeTodo}
-                      index={index}
-                    />
-                  )
-                )}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
+        {windowReady && (
+          <DragDropContext onDragEnd={handleOnDragEnd}>
+            <Droppable droppableId='draggableTodo'>
+              {provided => (
+                <div
+                  className='flex flex-col rounded-t-md mt-10 bg-white dark:bg-gray-800 shadow-lg'
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {(activeTabs !== TABS.ALL ? uniqueTodos : todos).map(
+                    (todo, index) => (
+                      <Todo
+                        key={todo.id}
+                        todo={todo}
+                        toggleTodo={toggleTodo}
+                        removeTodo={removeTodo}
+                        index={index + 1}
+                      />
+                    )
+                  )}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+        )}
         <div className='p-5 flex justify-between items-center text-gray-400 bg-white dark:bg-gray-800 rounded-b-md shadow-lg b'>
           <span>
             {(activeTabs !== TABS.ALL ? uniqueTodos : todos).length} items left

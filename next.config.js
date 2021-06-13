@@ -1,9 +1,17 @@
 const withPWA = require('next-pwa')
-const runtimeCaching = require('next-pwa/cache')
+
+const workboxConfig = require('./wb.config')
 
 module.exports = withPWA({
-  pwa: {
-    dest: 'public',
-    runtimeCaching,
+  future: {
+    webpack5: true,
   },
+  images: {
+    deviceSizes: [420, 768, 1024, 1200],
+    iconSizes: [],
+    domains: [],
+    path: '/_next/image',
+    loader: 'default',
+  },
+  pwa: workboxConfig,
 })
