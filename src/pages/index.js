@@ -76,6 +76,18 @@ export default function Home() {
     [todos]
   );
 
+  const renderTodo = (todo, index) => (
+    <Todo
+      key={todo.id}
+      id={todo.id}
+      index={index}
+      todo={todo}
+      toggleTodo={toggleTodo}
+      removeTodo={removeTodo}
+      moveTodo={moveTodo}
+    />
+  );
+
   return (
     <div className="w-full bg-white dark:bg-gray-900 min-h-screen">
       <main className="relative z-10 w-98% max-w-5xl mx-auto p-5">
@@ -109,17 +121,7 @@ export default function Home() {
             : tab === "completed"
             ? todos.filter((todo) => todo.completed)
             : todos
-          ).map((todo, index) => (
-            <Todo
-              key={todo.id}
-              id={todo.id}
-              index={index}
-              todo={todo}
-              toggleTodo={toggleTodo}
-              removeTodo={removeTodo}
-              moveTodo={moveTodo}
-            />
-          ))}
+          ).map((todo, index) => renderTodo(todo, index))}
         </div>
         <div className="p-5 flex justify-between items-center text-gray-400 bg-white dark:bg-gray-800 rounded-b-md shadow-lg b">
           <span>

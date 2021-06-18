@@ -1,11 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { HiCheck, HiX } from "react-icons/hi";
 
 const Todo = ({ id, index, todo, toggleTodo, removeTodo, moveTodo }) => {
-  const [thisTodo, setThisTodo] = useState(todo);
-  useEffect(() => {}, [thisTodo.completed]);
-
   const ItemTypes = {
     CARD: "card",
   };
@@ -74,6 +71,7 @@ const Todo = ({ id, index, todo, toggleTodo, removeTodo, moveTodo }) => {
       ref={ref}
       style={{ opacity }}
       className="flex items-center p-5 border-b dark:border-gray-700 text-gray-600 dark:text-gray-400 flex-wrap"
+      onClick={() => console.log({ id, index })}
     >
       <div
         className={`flex items-center justify-center w-7 h-7 rounded-full border border-gray-300 dark:border-gray-700 z-10 ${
@@ -91,9 +89,8 @@ const Todo = ({ id, index, todo, toggleTodo, removeTodo, moveTodo }) => {
         className={`ml-4 flex-1 ${
           todo.completed && "line-through text-gray-300 dark:text-gray-700"
         }`}
-        onClick={() => toggleTodo(todo.id)}
       >
-        {todo.name}
+        <span onClick={() => toggleTodo(todo.id)}>{todo.name}</span>
       </h3>
       <button
         className="ml-auto px-2 text-xl"
