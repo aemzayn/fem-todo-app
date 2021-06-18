@@ -9,11 +9,13 @@
   },
   "dependencies": {
     "@fontsource/josefin-sans": "^4.4.5",
+    "immutability-helper": "^3.1.1",
     "nanoid": "^3.1.23",
     "next": "latest",
     "next-pwa": "^5.2.21",
     "react": "^17.0.1",
-    "react-beautiful-dnd": "^13.1.0",
+    "react-dnd": "^14.0.2",
+    "react-dnd-html5-backend": "^14.0.0",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0"
   },
