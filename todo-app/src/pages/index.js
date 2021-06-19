@@ -4,7 +4,7 @@ import update from "immutability-helper";
 import { nanoid } from "nanoid";
 import { HiMoon, HiSun } from "react-icons/hi";
 import Todo from "../components/Todo";
-import { TODOS } from "../constants";
+import { TODOS } from "../../../shared/constants";
 
 export default function Home() {
   const [theme, setTheme] = useState("white");

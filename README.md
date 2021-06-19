@@ -33,7 +33,9 @@ Users should be able to:
 ### Screenshot
 
 ![Desktop](./screenshots/desktop.png)
+![Desktop Dark Mode](./screenshots/desktop-dark.png)
 ![Mobile](./screenshots/mobile.png)
+![Mobile Dark Mode](./screenshots/mobile-dark.png)
 
 ### Links
 

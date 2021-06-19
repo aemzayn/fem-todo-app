@@ -71,7 +71,6 @@ const Todo = ({ id, index, todo, toggleTodo, removeTodo, moveTodo }) => {
       ref={ref}
       style={{ opacity }}
       className="flex items-center p-5 border-b dark:border-gray-700 text-gray-600 dark:text-gray-400 flex-wrap"
-      onClick={() => console.log({ id, index })}
     >
       <div
         className={`flex items-center justify-center w-7 h-7 rounded-full border border-gray-300 dark:border-gray-700 z-10 ${
@@ -81,7 +80,7 @@ const Todo = ({ id, index, todo, toggleTodo, removeTodo, moveTodo }) => {
       >
         <HiCheck
           className={`text-bold text-white ${
-            todo.completed ? "opacity-0" : "opacity-100"
+            todo.completed ? "opacity-100" : "opacity-0"
           }`}
         />
       </div>
